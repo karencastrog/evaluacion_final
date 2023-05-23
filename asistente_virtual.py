@@ -45,19 +45,20 @@ def escuchar():
 
 def dar_hora():
     ahora = datetime.now()
-    current_time = ahora.strftime("%H:%M:%S")
-    print(f"La hora actual es {current_time}")
-    hablar(f"La hora actual es {current_time}")
+    hora_actual = ahora.strftime("%H:%M:%S")
+    print(f"La hora actual es {hora_actual}")
+    hablar(f"La hora actual es {hora_actual}")
 
 def buscar_wikipedia(consulta):
     wikipedia.set_lang("es")
-    resultado = wikipedia.summary(consulta, sentences=2, auto_suggest=False)
+    resultado = wikipedia.summary(consulta, sentences=1, auto_suggest=False)
     print(resultado)
-    hablar(resultado)
+    hablar(f"esto es lo que encontré en wikipedia:, {resultado}")
     
 
 def abrir_google():
     webbrowser.open_new_tab("https://www.google.com")
+    hablar(f"Abriendo google")
 
 def tomar_foto():
     cam = cv2.VideoCapture(0)
@@ -66,20 +67,21 @@ def tomar_foto():
         cv2.imwrite('foto.png', frame)
     cam.release()
     if ret:
+        print("Tomando foto... sonríe :) ")
         hablar("Foto tomada.")
     else:
         hablar("Lo siento, no pude tomar una foto.")
 
 def reproducir_youtube(video):
     pywhatkit.playonyt(video)
-    hablar(f"Reproduciendo {video}.")
+    hablar(f"Reproduciendo {video} en youtube")
 
 def ejecutar_asistente():
     while True:
         try:
             info = escuchar()
         except UnboundLocalError:
-            hablar("Intenta de nuevo, por fa")
+            hablar("Intenta de nuevo, por favor")
             continue
         if nombre in info:
             info = info.replace(nombre, '').strip()
