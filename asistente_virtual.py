@@ -1,12 +1,9 @@
 import speech_recognition as sr
 import pyttsx3
-from gtts import gTTS
 import pywhatkit
-import os
 import webbrowser
 from datetime import datetime
 import wikipedia
-import smtplib
 import cv2
 
 # inicia motor de texto a voz
@@ -14,7 +11,7 @@ motor = pyttsx3.init()
 
 # Configura la velocidad de lectura
 velocidad = motor.getProperty("rate")
-motor.setProperty("rate", velocidad - 20)
+motor.setProperty("rate", velocidad - 10)
 
 # Nombre del asistente
 nombre = "lucas"
@@ -82,7 +79,7 @@ def ejecutar_asistente():
         try:
             info = escuchar()
         except UnboundLocalError:
-            hablar("Lo siento, no te entendí")
+            hablar("Intenta de nuevo, por fa")
             continue
         if nombre in info:
             info = info.replace(nombre, '').strip()
