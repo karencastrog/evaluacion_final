@@ -14,10 +14,19 @@ motor = pyttsx3.init()
 
 # Configura la velocidad de lectura
 velocidad = motor.getProperty("rate")
-motor.setProperty("rate", velocidad - 50)
+motor.setProperty("rate", velocidad - 20)
 
 # Nombre del asistente
 nombre = "lucas"
+print("""
+    Estas son las opciones disponibles: 
+    1. Lucas reproduce ___ (en youtube)
+    2. Lucas dame la hora
+    3. Lucas busca en wikipedia ___
+    4. Lucas abre google
+    5. Lucas toma una foto
+    6. Lucas detente
+    """)
 
 def hablar(contenido):
     motor.say(contenido)
